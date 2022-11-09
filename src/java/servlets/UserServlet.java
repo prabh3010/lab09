@@ -46,6 +46,8 @@ public class UserServlet extends HttpServlet {
             if(delete != null && email != null && !email.equals("")) {
                 (new UserService()).delete(email);
                 req.setAttribute("users", null);
+                resp.sendRedirect("");
+                return;
             }
             
             rd.forward(req, resp);
@@ -74,6 +76,13 @@ public class UserServlet extends HttpServlet {
                 resp.sendRedirect("");
                 return;
             }
+            if(action != null && action.equals("edit")) {
+                (new UserService()).update(email, active == null ? 0 : 1, firstName, lastName, password, Integer.parseInt(role));
+                resp.sendRedirect("");
+                return;
+            }
+            resp.sendRedirect("");
+            return;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

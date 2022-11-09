@@ -58,7 +58,9 @@
                         <input type="hidden" name="_action" value="edit" />
                     </c:otherwise>
                 </c:choose>
-                <label>Email <input name="email" value="${user.email}"/></label><br />
+                <label>Email <input name="email" value="${user.email}" 
+                                    <c:if test="${user != null}">readonly</c:if>
+                                    /></label><br />
                 <label>Active <input type="checkbox" name="active" /></label><br />
                 <label>First Name <input name="firstName" value="${user.firstName}" /></label><br />
                 <label>Last Name <input name="lastName" value="${user.lastName}" /></label><br />
