@@ -76,6 +76,5 @@
                 <button type="submit">Submit</button>
             </form>
         </main>
-        <!--<script src="assets/main.js"></script>-->
     </body>
 </html>
