@@ -69,7 +69,7 @@
                     <option disabled selected>--- choose role ---</option>
                     <c:forEach var="role" items="${roles}">
                         <option value="${role.roleId}"
-                                <c:if test="${role.roleId == user.role}">
+                                <c:if test="${role.roleId == user.role.roleId}">
                                     selected
                                 </c:if>
                                 >${role.roleName}</option>

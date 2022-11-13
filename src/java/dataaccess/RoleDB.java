@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
 import models.Role;
 
 /**
@@ -18,32 +19,24 @@ import models.Role;
  */
 public class RoleDB {
     public List<Role> getAll() throws Exception {
-        List<Role> roles = new ArrayList<>();
-        ConnectionPool cp = ConnectionPool.getInstance();
-        Connection con = cp.getConnection();
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        
-        String sql = "SELECT * FROM role";
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
         
         try {
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-            
-            while(rs.next()) {
-                roles.add(
-                    new Role(
-                        rs.getInt(1),
-                        rs.getString(2)
-                    )
-                );
-            }
+            List<Role> roles = em.createNamedQuery("Role.findAll", Role.class).getResultList();
+            return roles;
         } finally {
-            DBUtil.closePreparedStatement(ps);
-            DBUtil.closeResultSet(rs);
-            cp.freeConnection(con);
+            em.close();
         }
+    }
+    
+    public Role get(int roleId) throws Exception {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
         
-        return roles;
+        try {
+            Role role = em.find(Role.class, roleId);
+            return role;
+        } finally {
+            em.close();
+        }
     }
 }
