@@ -17,7 +17,7 @@ import models.User;
 
 /**
  *
- * @author musta
+ * @author prabh
  */
 public class UserDB {
     public List<User> getAll() throws Exception {

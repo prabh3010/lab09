@@ -20,7 +20,7 @@ import services.UserService;
 
 /**
  *
- * @author musta
+ * @author prabh
  */
 public class UserServlet extends HttpServlet {
 

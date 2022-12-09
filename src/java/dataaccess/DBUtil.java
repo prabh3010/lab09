@@ -11,7 +11,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author musta
+ * @author prabh
  */
 public class DBUtil {
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("UserManagerPU");

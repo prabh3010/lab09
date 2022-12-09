@@ -13,7 +13,7 @@ import models.User;
 
 /**
  *
- * @author musta
+ * @author prabh
  */
 public class UserService {
 

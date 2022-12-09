@@ -12,7 +12,7 @@ import models.Role;
 
 /**
  *
- * @author musta
+ * @author prabh
  */
 public class RoleService {
     public List<Role> getAll() throws Exception {
